@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <%- include('partial/header') %>
+    </head>
+    <body class="bg-black text-white font-sans">
+        <%- include('partial/navbar') %>
+        <div class="flex">
+            <%- include('partial/sidebar') %>
+            <main class="flex-1 p-6">
+                <%- include('partial/messeges') %>
+                <%- body %>
+            </main>
+        </div>
+        <%- include('partial/footer') %>
+    </body>
+</html>
