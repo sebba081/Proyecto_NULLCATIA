@@ -3,10 +3,11 @@ const db = require('../config/db');
 const Scroll = {
   findAll: async () => {
     const [rows] = await db.query(`
-      SELECT scrolls.*, cats.name AS cat_name
-      FROM scrolls
-      LEFT JOIN cats ON scrolls.cat_id = cats.id
-    `);
+            SELECT p.*, c.name AS clan_name, t.name AS territory_name
+            FROM pergaminos p
+            JOIN clanes c ON p.clan_id = c.id
+            JOIN territories t ON p.territory_id = t.id
+        `);
     return rows;
   },
 

@@ -1,77 +1,71 @@
-<!-- Hero section -->
-<section
-    class="bg-gradient-to-br from-purple-900 via-black to-indigo-950 p-10 rounded-3xl shadow-xl text-center">
-    <h1 class="text-5xl font-bold text-purple-300">Reino Digital de
+<section class="text-center py-5">
+    <h1 class="medieval-title animate__animated animate__fadeInDown">⚔️ Reino de
         NULLCATIA</h1>
-    <p class="mt-6 text-xl text-gray-300 max-w-2xl mx-auto">
-        Bienvenido, novicio. Miles de gatitos nulos te esperan para ser
-        inicializados con propósito.
-    </p>
-    <img src="/img/hero-cat.png" alt="Gatito digital"
-        class="mx-auto mt-6 w-52 drop-shadow-lg animate-pulse" />
-    <a href="#clanes"
-        class="mt-10 inline-block px-6 py-3 bg-purple-700 hover:bg-purple-900 text-white rounded-2xl shadow-md transition">
-        Explora el Reino
-    </a>
+    <p class="medieval-subtitle mt-3">Un vasto dominio donde cada gatito nulo
+        debe encontrar su propósito ancestral.</p>
 </section>
 
-<!-- Clanes -->
-<section id="clanes" class="grid md:grid-cols-3 gap-8 mt-16">
-    <% const clanes = [
-    { nombre: 'Clan de la Pila', color: 'text-cyan-400', desc:
-    'Custodios de las Praderas de Pila, donde cada push tiene un destino.' },
-    { nombre: 'Clan del Caché', color: 'text-green-400', desc:
-    'Guardianes de las Cuevas de Caché, escondite de sabiduría veloz.' },
-    { nombre: 'Clan de los Logs', color: 'text-yellow-400', desc:
-    'Cronistas de las Llanuras de Logs, testigos de cada excepción.' }
-    ]; %>
+<section class="content pb-5">
+    <div class="container">
 
-    <% clanes.forEach(clan => { %>
-    <div
-        class="bg-gray-800 rounded-xl p-6 shadow-md hover:scale-105 transition-all">
-        <h2 class="text-2xl <%= clan.color %> font-semibold"><%= clan.nombre
-            %></h2>
-        <p class="text-sm mt-2 text-gray-300"><%= clan.desc %></p>
-    </div>
-    <% }) %>
-</section>
+        <!-- Narrativa del reino -->
+        <div class="scroll-section my-5">
+            <h2 class="medieval-title text-center">📜 El Decreto del
+                Consejo</h2>
+            <p class="mt-3">
+                En los albores del ciclo binario 4.0, el Consejo Supremo de
+                NULLCATIA ha declarado la Transformación Felina.
+                Los clanes de los Bosques Binarios, Ríos de Paquetes y Montañas
+                de Índices deberán unir fuerzas para inicializar
+                a los gatitos nulos y preservar la armonía del código ancestral.
+            </p>
+            <p>
+                Cada felino será asignado a un clan y recibirá una misión
+                sagrada: custodiar los territorios de la red y mantener
+                la pureza del stack.
+            </p>
+        </div>
 
-<!-- Héroes del Backend -->
-<section
-    class="bg-gradient-to-r from-indigo-950 to-gray-900 p-10 mt-20 rounded-2xl shadow-lg">
-    <h2 class="text-3xl text-center text-pink-400 mb-10">Guardianes del Backend
-        Sagrado</h2>
-    <div class="grid sm:grid-cols-3 gap-6 text-center">
-        <div>
-            <img src="/img/felix.png" class="mx-auto w-20 mb-4" />
-            <h3 class="text-xl text-pink-300 font-bold">Felix</h3>
-            <p>Guardabits del Enrutador de los Mil Caminos.</p>
-        </div>
-        <div>
-            <img src="/img/serafina.png" class="mx-auto w-20 mb-4" />
-            <h3 class="text-xl text-blue-300 font-bold">Serafina</h3>
-            <p>Sanadora de Promesas Rotos con `try/catch`.</p>
-        </div>
-        <div>
-            <img src="/img/captain.png" class="mx-auto w-20 mb-4" />
-            <h3 class="text-xl text-green-300 font-bold">Captain Middleware</h3>
-            <p>Maestro del Acceso Seguro y Autenticación.</p>
-        </div>
-    </div>
-</section>
+        <!-- Tarjetas medievales -->
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card card-medieval">
+                    <div class="card-header">
+                        🛡️ Clanes
+                    </div>
+                    <div class="card-body">
+                        <p>Guardianes del reino y sus territorios sagrados.</p>
+                        <a href="/clanes" class="btn mt-2">Explorar clanes</a>
+                    </div>
+                </div>
+            </div>
 
-<!-- Saberes / Pergaminos -->
-<section class="p-10 mt-20 bg-gray-950 rounded-xl">
-    <h2 class="text-3xl text-yellow-400 text-center mb-6">📜 Pergaminos del
-        Saber</h2>
-    <div class="bg-black p-6 rounded-lg shadow-inner font-mono text-green-400">
-        <pre>
-  GET /clanes
-  200 OK
-  [
-    { "nombre": "Clan del Caché", "territorio": "cuevas de caché" },
-    { "nombre": "Clan de la Pila", "territorio": "praderas de pila" }
-  ]
-      </pre>
+            <div class="col-md-4 mb-4">
+                <div class="card card-medieval">
+                    <div class="card-header">
+                        🐱 Gatitos
+                    </div>
+                    <div class="card-body">
+                        <p>Felinos listos para ser inicializados y cumplir su
+                            destino.</p>
+                        <a href="/gatitos" class="btn mt-2">Ver gatitos</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card card-medieval">
+                    <div class="card-header">
+                        📖 Pergaminos
+                    </div>
+                    <div class="card-body">
+                        <p>Sabiduría felina ancestral registrada por
+                            generaciones.</p>
+                        <a href="/scrolls" class="btn mt-2">Leer pergaminos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>

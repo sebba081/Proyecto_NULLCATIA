@@ -3,15 +3,30 @@ const db = require('../config/db');
 const Cat = {
   findAll: async () => {
     const [rows] = await db.query(`
-      SELECT cats.*, clans.name AS clan_name 
-      FROM cats 
-      LEFT JOIN clans ON cats.clan_id = clans.id
-    `);
+            SELECT cats.*, clans.name AS clan_name 
+            FROM cats 
+            LEFT JOIN clans ON cats.clan_id = clans.id
+        `);
+    return rows;
+  },
+
+  findByClanId: async (clan_id) => {
+    const [rows] = await db.query(`
+            SELECT cats.*, clans.name AS clan_name 
+            FROM cats 
+            LEFT JOIN clans ON cats.clan_id = clans.id
+            WHERE cats.clan_id = ?
+        `, [clan_id]);
     return rows;
   },
 
   findById: async (id) => {
-    const [rows] = await db.query('SELECT * FROM cats WHERE id = ?', [id]);
+    const [rows] = await db.query(`
+      SELECT cats.*, clans.name AS clan_name
+      FROM cats
+      LEFT JOIN clans ON cats.clan_id = clans.id
+      WHERE cats.id = ?
+    `, [id]);
     return rows[0];
   },
 

@@ -3,7 +3,12 @@ const Cat = require('../../models/Cat');
 module.exports = {
   index: async (req, res, next) => {
     try {
-      const gatos = await Cat.findAll();
+      const { clan_id } = req.query;
+
+      const gatos = clan_id
+        ? await Cat.findByClanId(clan_id)
+        : await Cat.findAll();
+
       res.json(gatos);
     } catch (err) {
       next(err);

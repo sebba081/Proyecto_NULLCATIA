@@ -1,0 +1,93 @@
+<section class="content-header text-center">
+    <h1>
+        <i class="fas fa-paw text-pink"></i> Gestión de Gatitos
+        <small>Lista y administración felina</small>
+    </h1>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- Botón y filtro -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <form method="GET" action="/gatitos" class="form-inline">
+                    <div class="form-group mr-2">
+                        <label for="clan_id" class="mr-2">
+                            <i class="fas fa-filter text-info"></i> Clan:
+                        </label>
+                        <select name="clan_id" class="form-control">
+                            <option value>-- Todos --</option>
+                            <% clans.forEach(clan => { %>
+                            <option value="<%= clan.id %>" <%=clan.id ==
+                                selectedClan ? 'selected' : '' %>>
+                                <%= clan.name %>
+                            </option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary ml-2" type="submit">
+                        <i class="fas fa-search mr-1"></i>Filtrar
+                    </button>
+                </form>
+            </div>
+            <div class="col-md-6 text-right">
+                <a href="/gatitos/nuevo" class="btn btn-success">
+                    <i class="fas fa-plus-circle mr-1"></i> Registrar Gatito
+                </a>
+            </div>
+        </div>
+
+        <!-- Tabla de Gatitos -->
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-cat mr-2 text-primary"></i> Lista de
+                    Gatitos
+                </h3>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Clan</th>
+                            <th>Edad</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% cats.forEach(cat => { %>
+                        <tr>
+                            <td><%= cat.id %></td>
+                            <td><%= cat.name %></td>
+                            <td><%= cat.clan_name || 'Sin Clan' %></td>
+                            <td><%= cat.age %> años</td>
+                            <td class="text-center">
+                                <a href="/gatitos/<%= cat.id %>"
+                                    class="btn btn-sm btn-secondary">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="/gatitos/<%= cat.id %>/editar"
+                                    class="btn btn-sm btn-info">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form
+                                    action="/gatitos/<%= cat.id %>?_method=DELETE"
+                                    method="POST" class="d-inline">
+                                    <button type="submit"
+                                        class="btn btn-sm btn-danger"
+                                        onclick="return confirm('¿Eliminar este gatito?')">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

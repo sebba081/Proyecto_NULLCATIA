@@ -1,0 +1,31 @@
+<section class="content-header">
+    <h1 class="text-light text-center">😺 Detalle del Gatito</h1>
+</section>
+<section class="content">
+    <div class="container bg-dark p-4 rounded text-white">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center mx-auto"
+                data-clan="<%= cat.clan_name || 'Sin Clan' %>">
+                <!-- Imagen insertada automáticamente por JS -->
+            </div>
+            <div class="col-md-8">
+                <h3><i class="fas fa-paw"></i> Nombre: <%= cat.name %></h3>
+                <p><i class="fas fa-hashtag"></i> ID: <%= cat.id %></p>
+                <p><i class="fas fa-shield-alt"></i> Clan: <%= cat.clan_name ||
+                    'Sin Clan' %></p>
+                <p><i class="fas fa-birthday-cake"></i> Edad: <%= cat.age %>
+                    años</p>
+                <div class="mt-4">
+                    <a href="/gatitos" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </a>
+                    <a href="/gatitos/<%= cat.id %>/editar"
+                        class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/js/clanCatImage.js"></script>

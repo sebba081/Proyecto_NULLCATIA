@@ -1,17 +1,31 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
     <head>
-        <%- include('partial/header') %>
+        <%- include('partials/header') %>
     </head>
-    <body class="bg-black text-white font-sans">
-        <%- include('partial/navbar') %>
-        <div class="flex">
-            <%- include('partial/sidebar') %>
-            <main class="flex-1 p-6">
-                <%- include('partial/messeges') %>
+    <body class="sidebar-mini layout-fixed">
+        <div class="wrapper">
+
+            <!-- Navbar superior -->
+            <%- include('partials/navbar') %>
+
+            <!-- Sidebar izquierdo -->
+            <%- include('partials/sidebar') %>
+
+            <!-- Contenido principal -->
+            <div class="content-wrapper">
+                <%- include('partials/messages') %>
                 <%- body %>
-            </main>
+            </div>
+
+            <!-- Footer -->
+            <%- include('partials/footer') %>
         </div>
-        <%- include('partial/footer') %>
+
+        <!-- Scripts de AdminLTE -->
+        <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+        <script
+            src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/adminlte/dist/js/adminlte.min.js"></script>
     </body>
 </html>

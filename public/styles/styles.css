@@ -1,0 +1,89 @@
+.medieval-title {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 3rem;
+    color: #f5deb3;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.medieval-subtitle {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 1.25rem;
+    color: #6b421b;
+}
+
+.scroll-section {
+    background-size: cover;
+    padding: 2rem;
+    border: 4px solid #d2b48c;
+    border-radius: 12px;
+    color: #2c2c2c;
+    font-family: Georgia, serif;
+}
+
+body {
+    background-image: url('../img/pergamino-textura.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.custom-navbar .nav-link {
+    color: #000 !important;
+    /* texto negro */
+    font-weight: bold !important;
+    /* negrita */
+    text-shadow: 0 0 1px #fff;
+    /* brillo leve para resaltar sobre textura */
+}
+
+.custom-navbar .nav-link:hover {
+    color: #6b421b !important;
+    /* color marrón medieval al pasar el mouse */
+}
+
+.content-wrapper {
+    background: none !important;
+    background-color: transparent !important;
+}
+
+.card-medieval {
+    background: url('/img/pergamino-textura.jpg') center center no-repeat;
+    background-size: cover;
+    border: 4px solid #a87c4f;
+    border-radius: 12px;
+    color: #3b2c1b;
+    font-family: 'Uncial Antiqua', cursive;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-medieval:hover {
+    transform: scale(1.03);
+}
+
+.card-medieval .card-header {
+    background-color: transparent;
+    border-bottom: 2px solid #caa76b;
+    font-size: 1.5rem;
+    color: #2e1c0b;
+    text-shadow: 1px 1px 1px #fef3d8;
+}
+
+.card-medieval .card-body p {
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    color: #2f2f2f;
+}
+
+.card-medieval .btn {
+    background-color: #d3b17c;
+    color: #2f1d0b;
+    font-weight: bold;
+    border: none;
+}
+
+.card-medieval .btn:hover {
+    background-color: #b88f54;
+    color: #fff;
+}

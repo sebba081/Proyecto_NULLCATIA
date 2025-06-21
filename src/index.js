@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
-const expressLayouts = require('express-ejs-layouts'); // 👈
+const expressLayouts = require('express-ejs-layouts');
 
 require('dotenv').config();
 
@@ -23,6 +23,9 @@ app.set('layout', 'layout');
 // Rutas
 const viewRoutes = require('./routers/views/index');
 app.use('/', viewRoutes);
+const apiRoutes = require('./routers/api');
+app.use('/api', apiRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`✅ Servidor NULLCATIA activo en http://localhost:${PORT}/`);

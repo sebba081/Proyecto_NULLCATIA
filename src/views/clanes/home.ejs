@@ -1,0 +1,28 @@
+<section class="content-header text-center py-5">
+    <h1 class="medieval-title">🛡️ Clanes del Reino</h1>
+    <p class="medieval-subtitle">Guardianes de los territorios sagrados de
+        NULLCATIA</p>
+</section>
+
+<section class="content pb-5">
+    <div class="container">
+        <div class="row">
+            <% clans.forEach(clan => { %>
+            <div class="col-md-6 mb-4">
+                <div class="card card-medieval text-center">
+                    <div class="card-body" data-clan-escudo="<%= clan.name %>">
+                        <h4 class="medieval-title mt-2"><%= clan.name %></h4>
+                        <p><strong>Territorio:</strong> <%= clan.territory_name
+                            %></p>
+                        <p><strong>Historia:</strong> <%= clan.history ||
+                            'Historia aún no registrada en los pergaminos.'
+                            %></p>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<script src="/js/clanShieldImage.js"></script>

@@ -1,0 +1,86 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+
+                <!-- Card -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-cat mr-2"></i>
+                            <%= gato ? 'Editar Gatito' :
+                            'Registrar Nuevo Gatito' %>
+                        </h3>
+                    </div>
+
+                    <!-- Formulario -->
+                    <form
+                        action="<%= gato ? '/gatitos/' + gato.id + '?_method=PUT' : '/gatitos' %>"
+                        method="POST">
+                        <div class="card-body">
+
+                            <!-- Nombre -->
+                            <div class="form-group">
+                                <label for="name">
+                                    <i
+                                        class="fas fa-signature text-primary mr-1"></i>
+                                    Nombre
+                                </label>
+                                <input type="text" class="form-control"
+                                    id="name" name="name"
+                                    placeholder="Ingresa el nombre del gatito"
+                                    value="<%= gato ? gato.name : '' %>"
+                                    required>
+                            </div>
+
+                            <!-- Edad -->
+                            <div class="form-group">
+                                <label for="age">
+                                    <i
+                                        class="fas fa-birthday-cake text-warning mr-1"></i>
+                                    Edad
+                                </label>
+                                <input type="number" class="form-control"
+                                    id="age" name="age"
+                                    placeholder="Edad del gatito en años"
+                                    min="0"
+                                    value="<%= gato ? gato.age : '' %>"
+                                    required>
+                            </div>
+
+                            <!-- Clan -->
+                            <div class="form-group">
+                                <label for="clan_id">
+                                    <i
+                                        class="fas fa-users text-success mr-1"></i>
+                                    Clan
+                                </label>
+                                <select class="form-control" id="clan_id"
+                                    name="clan_id" required>
+                                    <option value>-- Selecciona un clan
+                                        --</option>
+                                    <% clanes.forEach(clan => { %>
+                                    <option value="<%= clan.id %>" <%=gato &&
+                                        gato.clan_id === clan.id ? 'selected' :
+                                        '' %>>
+                                        <%= clan.name %>
+                                    </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Botón de envío -->
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save mr-1"></i>
+                                <%= gato ? 'Actualizar Gatito' : 'Crear Gatito'
+                                %>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

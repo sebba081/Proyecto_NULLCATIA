@@ -1,123 +1,97 @@
-# 🐾 NULLCATIA - Backend API REST
+# 🐱 NULLCATIA – Sistema de Gestión Gatuna
 
-NULLCATIA es un reino digital poblado por gatos nulos que buscan propósito. Esta API backend en Node.js + Express les permite ser inicializados, organizados en clanes, custodiar territorios y redactar antiguos pergaminos.
+NULLCATIA es un vasto reino digital habitado por miles de gatitos nulos que nacen sin valores predeterminados y deben ser inicializados para encontrar su propósito. Este proyecto representa la modernización de su infraestructura mediante una aplicación web construida con Node.js, Express, MySQL y EJS.
 
----
+## 🌐 Tecnologías utilizadas
 
-## 📦 Tecnologías
+* Node.js + Express
+* MySQL (con conexión mediante `mysql2`)
+* EJS (vistas servidor)
+* AdminLTE (para el diseño de interfaz)
+* Tailwind (complementario en estilos)
+* Axios (cliente HTTP interno)
+* Method-override (para soporte PUT/DELETE vía HTML)
 
-- Node.js
-- Express
-- MySQL (usando mysql2)
-- Jest + Supertest (tests)
-- dotenv
-- express-validator
-- Estructura modular con rutas, controladores y modelos
-
----
-
-## 📁 Estructura
+## 📦 Estructura del proyecto
 
 ```
-src/
-├── models/
-├── routers/
-│   ├── api/
-│   └── controllers/
-├── config/
-├── index.js
-database/
-├── schema.sql
-├── seeds.sql
+Proyecto_NULLCATIA/
+├── config/             # Configuración DB
+├── controllers/        # Lógica de API REST
+├── models/             # Consultas SQL
+├── routes/             # Rutas Express
+│   ├── gatitos.js
+│   └── api/
+├── views/              # Vistas EJS
+│   ├── partials/
+│   └── cats/
+├── public/             # CSS, imágenes, JS estático
+├── database/
+│   └── schema.sql      # Script de creación de base de datos
+├── .env.example        # Variables de entorno (sin credenciales)
+├── README.md
+└── server.js
 ```
 
----
-
-## ✅ Requisitos
-
-- Node.js ≥ 16
-- MySQL Server activo
-- Git (opcional)
-
----
-
-## ⚙️ Instalación
+## 🛠️ Instalación
 
 1. Clona el repositorio:
 
-```bash
-git clone https://github.com/tu-usuario/nullcatia.git
-cd nullcatia
-```
+   ```bash
+   git clone <repositorio>
+   cd Proyecto_NULLCATIA
+   ```
 
 2. Instala dependencias:
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-3. Copia el archivo `.env.example` como `.env` y configúralo:
+3. Configura el archivo `.env`:
 
-```env
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=tu_clave
-DB_NAME=nullcatia_db
-PORT=3000
-```
+   ```env
+   DB_HOST=localhost
+   DB_USER=root
+   DB_PASSWORD=tu_clave
+   DB_NAME=nullcatia
+   PORT=3000
+   ```
 
 4. Crea la base de datos:
 
-```bash
-mysql -u root -p < database/schema.sql
-mysql -u root -p nullcatia_db < database/seeds.sql
-```
+   ```bash
+   mysql -u root -p < database/schema.sql
+   ```
 
----
+5. Inicia el servidor:
 
-## 🚀 Ejecutar el servidor
+   ```bash
+   npm run dev
+   ```
 
-```bash
-npm run dev
-```
+## ✨ Funcionalidades
 
-Servidor en: `http://localhost:3000/api`
+* ✅ Listado de gatitos con filtro por clan.
+* ✅ Registro de nuevos gatitos con selección de clan.
+* ✅ Edición y eliminación.
+* ✅ Detalle individual de cada gato.
+* ✅ Gestión de clanes y territorios en backend (estructura preparada).
 
----
+## 🔒 Validaciones
 
-## 📬 Endpoints principales
+* Validación de campos (`name`, `age`, `clan_id`) con Express Validator.
+* Manejo de errores con middleware centralizado.
+* Rutas REST documentadas y desacopladas.
 
-| Método | Ruta                   | Descripción             |
-|--------|------------------------|-------------------------|
-| GET    | /api/gatitos           | Listar gatos            |
-| POST   | /api/clanes            | Crear clan              |
-| PUT    | /api/pergaminos/:id    | Actualizar pergamino    |
-| DELETE | /api/territorios/:id   | Eliminar territorio     |
+## 🎮 Video de presentación
 
----
+[📺 Ver video aquí](https://drive.google.com/...)
 
-## 🧪 Ejecutar pruebas (Jest + Supertest)
+El video incluye: introducción narrativa, home visual, registro, filtros y operaciones CRUD completas.
 
-```bash
-npm test
-```
+## 🤙️ Créditos
 
-Esto realiza pruebas de integración reales contra tu base de datos.
-
----
-
-## 💡 Buenas prácticas
-
-- Usa `.env` para proteger credenciales.
-- Aísla la base de datos de test (usa `nullcatia_test`).
-- Usa `express-validator` para validar entradas de usuario.
-- Documenta tus endpoints con Swagger (recomendado).
-
----
-
-## 👤 Autor
-
-Sebastián Solís  
-Proyecto académico para la asignatura **Programación Web (IEI-054)**  
+Proyecto desarrollado para la Evaluación 3 de **Programación Web** – IEI-054
 Docente: Maximiliano Moraga
+Instituto Profesional
