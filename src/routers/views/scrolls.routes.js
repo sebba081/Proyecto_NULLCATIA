@@ -11,7 +11,8 @@ router.get('/', async (req, res) => {
     const clanes = await clanModel.findAll();
     const territorios = await territoryModel.findAll();
 
-    res.render('pergaminos/home', {
+    res.render('scrolls/home', {
+        title: 'Pergaminos del Clan',
         pergaminos,
         clanes,
         territorios,

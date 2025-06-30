@@ -60,30 +60,13 @@
                     <tbody>
                         <% cats.forEach(cat => { %>
                         <tr>
-                            <td><%= cat.id %></td>
-                            <td><%= cat.name %></td>
-                            <td><%= cat.clan_name || 'Sin Clan' %></td>
-                            <td><%= cat.age %> años</td>
-                            <td class="text-center">
-                                <a href="/gatitos/<%= cat.id %>"
-                                    class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="/gatitos/<%= cat.id %>/editar"
-                                    class="btn btn-sm btn-info">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <form
-                                    action="/gatitos/<%= cat.id %>?_method=DELETE"
-                                    method="POST" class="d-inline">
-                                    <button type="submit"
-                                        class="btn btn-sm btn-danger"
-                                        onclick="return confirm('¿Eliminar este gatito?')">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
-                            </td>
+                            <td><%= scroll.id %></td>
+                            <td><%= scroll.title %></td>
+                            <td><%= scroll.clan_name %></td>
+                            <td><%= scroll.something_else || 'N/A' %></td>
+                            <td class="text-center">...</td>
                         </tr>
+
                         <% }) %>
                     </tbody>
                 </table>

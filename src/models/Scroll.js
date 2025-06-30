@@ -1,13 +1,27 @@
 const db = require('../config/db');
 
 const Scroll = {
-  findAll: async () => {
-    const [rows] = await db.query(`
-            SELECT p.*, c.name AS clan_name, t.name AS territory_name
-            FROM pergaminos p
-            JOIN clanes c ON p.clan_id = c.id
-            JOIN territories t ON p.territory_id = t.id
-        `);
+  findAll: async (filters = {}) => {
+    let query = `
+    SELECT s.*, cl.name AS clan_name
+    FROM scrolls s
+    JOIN clans cl ON s.clan_id = cl.id
+    WHERE 1 = 1
+  `;
+
+    const params = [];
+
+    if (filters.title) {
+      query += ` AND s.title LIKE ?`;
+      params.push(`%${filters.title}%`);
+    }
+
+    if (filters.clan_id) {
+      query += ` AND s.clan_id = ?`;
+      params.push(filters.clan_id);
+    }
+
+    const [rows] = await db.query(query, params);
     return rows;
   },
 
