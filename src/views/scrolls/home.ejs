@@ -1,113 +1,63 @@
-<section class="content-header text-center">
-    <h1>
-        <i class="fas fa-scroll text-warning"></i> Biblioteca de Pergaminos
-        <small>Conocimiento ancestral felino</small>
-    </h1>
-</section>
+<h1 class="medieval-title text-center">
+    📜 Pergaminos del Clan
+</h1>
+<p class="medieval-subtitle text-center">
+    Registro y sabiduría ancestral felina
+</p>
 
-<section class="content">
-    <div class="container-fluid">
+<div class="scroll-section">
+    <!-- Filtro y botón -->
+    <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <form method="GET" action="/scrolls"
+            style="display: flex; align-items: center; gap: 0.5rem;">
+            <label for="clan_id">Clan:</label>
+            <select name="clan_id">
+                <option value <%=!selectedClan ? 'selected' : '' %>>-- Todos
+                    --</option>
+                <% clanes.forEach(clan => { %>
+                <option value="<%= clan.id %>" <%=clan.id == selectedClan ?
+                    'selected' : '' %>>
+                    <%= clan.name %>
+                </option>
+                <% }) %>
+            </select>
+            <button type="submit">Filtrar</button>
+        </form>
 
-        <!-- Filtros -->
-        <div class="row mb-3">
-            <div class="col-md-8">
-                <form method="GET" action="/pergaminos" class="form-inline">
-                    <div class="form-group mr-2">
-                        <label for="clan_id" class="mr-2">
-                            <i class="fas fa-users text-info"></i> Clan:
-                        </label>
-                        <select name="clan_id" class="form-control">
-                            <option value>-- Todos --</option>
-                            <% clanes.forEach(clan => { %>
-                            <option value="<%= clan.id %>" <%=clan.id ==
-                                selectedClan ? 'selected' : '' %>>
-                                <%= clan.name %>
-                            </option>
-                            <% }) %>
-                        </select>
-                    </div>
-
-                    <div class="form-group mx-3">
-                        <label for="territory_id" class="mr-2">
-                            <i class="fas fa-map-marked-alt text-success"></i>
-                            Territorio:
-                        </label>
-                        <select name="territory_id" class="form-control">
-                            <option value>-- Todos --</option>
-                            <% territorios.forEach(t => { %>
-                            <option value="<%= t.id %>" <%=t.id ==
-                                selectedTerritory ? 'selected' : '' %>>
-                                <%= t.name %>
-                            </option>
-                            <% }) %>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-search mr-1"></i> Filtrar
-                    </button>
-                </form>
-            </div>
-
-            <div class="col-md-4 text-right">
-                <a href="/pergaminos/nuevo" class="btn btn-success">
-                    <i class="fas fa-plus-circle mr-1"></i> Nuevo Pergamino
-                </a>
-            </div>
-        </div>
-
-        <!-- Tabla -->
-        <div class="card card-warning card-outline">
-            <div class="card-header">
-                <h3 class="card-title"><i
-                        class="fas fa-book-open mr-2"></i>Listado de
-                    Pergaminos</h3>
-            </div>
-            <div class="card-body table-responsive p-0">
-                <table class="table table-hover table-bordered text-nowrap">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>ID</th>
-                            <th>Título</th>
-                            <th>Clan</th>
-                            <th>Territorio</th>
-                            <th>Fecha</th>
-                            <th class="text-center">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% pergaminos.forEach(p => { %>
-                        <tr>
-                            <td><%= p.id %></td>
-                            <td><%= p.titulo %></td>
-                            <td><%= p.clan_name || 'N/A' %></td>
-                            <td><%= p.territory_name || 'N/A' %></td>
-                            <td><%= p.fecha_creacion %></td>
-                            <td class="text-center">
-                                <a href="/pergaminos/<%= p.id %>"
-                                    class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="/pergaminos/<%= p.id %>/editar"
-                                    class="btn btn-sm btn-info">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <form
-                                    action="/pergaminos/<%= p.id %>?_method=DELETE"
-                                    method="POST" class="d-inline">
-                                    <button type="submit"
-                                        class="btn btn-sm btn-danger"
-                                        onclick="return confirm('¿Eliminar este pergamino?')">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        <% }) %>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
+        <a href="/scrolls/nuevo" class="action-btn">➕ Nuevo Pergamino</a>
     </div>
-</section>
+
+    <!-- Tabla de pergaminos -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Contenido</th>
+                <th>Clan</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% pergaminos.forEach(p => { %>
+            <tr>
+                <td><%= p.id %></td>
+                <td><%= p.title %></td>
+                <td><%= p.content %></td>
+                <td><%= p.clan_name %></td>
+                <td>
+                    <a href="/scrolls/editar/<%= p.id %>"
+                        class="action-btn">✏️</a>
+                    <form action="/scrolls/<%= p.id %>?_method=DELETE"
+                        method="POST"
+                        onsubmit="return confirm('¿Estás seguro de eliminar este pergamino?');"
+                        style="display: inline;">
+                        <button type="submit" class="action-btn">🗑️</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

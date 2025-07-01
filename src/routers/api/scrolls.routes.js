@@ -1,13 +1,36 @@
 const express = require('express');
 const router = express.Router();
-const { scrollsController } = require('../controllers');
-const validateScroll = require('../../middlewares/validators/scrollValidator');
-const handleValidation = require('../../middlewares/validators/handleValidation');
+const ctrl = require('../controllers/scrolls.Controller');
 
-router.get('/', scrollsController.index);
-router.get('/:id', scrollsController.show);
-router.post('/', validateScroll, handleValidation, scrollsController.create);
-router.put('/:id', validateScroll, handleValidation, scrollsController.update);;
-router.delete('/:id', scrollsController.destroy);
+// Get all scrolls
+router.get('/', async (req, res) => {
+    const data = await ctrl.getAll(req);
+    res.json(data);
+});
+
+// Get one scroll
+router.get('/:id', async (req, res) => {
+    const item = await ctrl.getOne(req.params.id);
+    if (!item) return res.status(404).json({ error: 'No encontrado' });
+    res.json(item);
+});
+
+// Create a new scroll
+router.post('/', async (req, res) => {
+    const id = await ctrl.create(req.body);
+    res.status(201).json({ message: 'Creado', id });
+});
+
+// Update an existing scroll
+router.put('/:id', async (req, res) => {
+    await ctrl.update(req.params.id, req.body);
+    res.json({ message: 'Actualizado' });
+});
+
+// Delete an existing scroll
+router.delete('/:id', async (req, res) => {
+    await ctrl.remove(req.params.id);
+    res.json({ message: 'Eliminado' });
+});
 
 module.exports = router;

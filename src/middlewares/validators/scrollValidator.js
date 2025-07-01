@@ -7,7 +7,7 @@ const validateScroll = [
     body('content')
         .notEmpty().withMessage('El contenido es obligatorio'),
 
-    body('cat_id')
+    body('clan_id')
         .notEmpty().withMessage('Debe asociarse a un gato')
         .isInt().withMessage('El ID del gato debe ser un número')
 ];

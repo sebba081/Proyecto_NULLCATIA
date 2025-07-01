@@ -1,76 +1,69 @@
-<section class="content-header text-center">
-    <h1>
-        <i class="fas fa-paw text-pink"></i> Gestión de Gatitos
-        <small>Lista y administración felina</small>
-    </h1>
-</section>
+<h1 class="medieval-title text-center">
+    🐾 Gestión de Gatitos
+</h1>
+<p class="medieval-subtitle text-center">
+    Lista y administración felina
+</p>
 
-<section class="content">
-    <div class="container-fluid">
+<div class="scroll-section">
 
-        <!-- Botón y filtro -->
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <form method="GET" action="/gatitos" class="form-inline">
-                    <div class="form-group mr-2">
-                        <label for="clan_id" class="mr-2">
-                            <i class="fas fa-filter text-info"></i> Clan:
-                        </label>
-                        <select name="clan_id" class="form-control">
-                            <option value>-- Todos --</option>
-                            <% clans.forEach(clan => { %>
-                            <option value="<%= clan.id %>" <%=clan.id ==
-                                selectedClan ? 'selected' : '' %>>
-                                <%= clan.name %>
-                            </option>
-                            <% }) %>
-                        </select>
-                    </div>
-                    <button class="btn btn-primary ml-2" type="submit">
-                        <i class="fas fa-search mr-1"></i>Filtrar
-                    </button>
-                </form>
-            </div>
-            <div class="col-md-6 text-right">
-                <a href="/gatitos/nuevo" class="btn btn-success">
-                    <i class="fas fa-plus-circle mr-1"></i> Registrar Gatito
-                </a>
-            </div>
-        </div>
+    <!-- Filtro y botón -->
+    <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
 
-        <!-- Tabla de Gatitos -->
-        <div class="card card-primary card-outline">
-            <div class="card-header">
-                <h3 class="card-title">
-                    <i class="fas fa-cat mr-2 text-primary"></i> Lista de
-                    Gatitos
-                </h3>
-            </div>
-            <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap table-bordered">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Clan</th>
-                            <th>Edad</th>
-                            <th class="text-center">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% cats.forEach(cat => { %>
-                        <tr>
-                            <td><%= scroll.id %></td>
-                            <td><%= scroll.title %></td>
-                            <td><%= scroll.clan_name %></td>
-                            <td><%= scroll.something_else || 'N/A' %></td>
-                            <td class="text-center">...</td>
-                        </tr>
+        <!-- Formulario de filtro -->
+        <form method="GET" action="/gatos"
+            style="display: flex; align-items: center; gap: 0.5rem;">
+            <label for="clan_id">Clan:</label>
+            <select name="clan_id" id="clan_id">
+                <option value <%=!selectedClan ? 'selected' : '' %>>-- Todos
+                    --</option>
+                <% clanes.forEach(clan => { %>
+                <option value="<%= clan.id %>" <%=clan.id == selectedClan ?
+                    'selected' : '' %>>
+                    <%= clan.name %>
+                </option>
+                <% }) %>
+            </select>
+            <button type="submit">Filtrar</button>
+        </form>
 
-                        <% }) %>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <!-- Botón nuevo gatito -->
+        <a href="/gatos/nuevo" class="action-btn" style="white-space: nowrap;">
+            ➕ Registrar Gatito
+        </a>
     </div>
-</section>
+
+    <!-- Tabla de gatitos -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Clan</th>
+                <th>Edad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% cats.forEach(cat => { %>
+            <tr>
+                <td><%= cat.id %></td>
+                <td><%= cat.name %></td>
+                <td><%= cat.clan_name %></td>
+                <td><%= cat.age || 'N/A' %></td>
+                <td>
+                    <a href="/gatos/editar/<%= cat.id %>"
+                        class="action-btn">✏️</a>
+                    <form action="/gatos/<%= cat.id %>?_method=DELETE"
+                        method="POST"
+                        onsubmit="return confirm('¿Seguro que quieres eliminar este gatito?');"
+                        style="display: inline;">
+                        <button type="submit" class="action-btn">🗑️</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

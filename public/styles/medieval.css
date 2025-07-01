@@ -1,3 +1,6 @@
+/* Tipografía y títulos */
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+
 .medieval-title {
     font-family: 'Uncial Antiqua', cursive;
     font-size: 3rem;
@@ -11,6 +14,15 @@
     color: #6b421b;
 }
 
+/* Fondo y sección pergamino */
+body {
+    background-image: url('../img/pergamino-textura.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .scroll-section {
     background-size: cover;
     padding: 2rem;
@@ -20,79 +32,63 @@
     font-family: Georgia, serif;
 }
 
-body {
-    background-image: url('../img/pergamino-textura.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.custom-navbar .nav-link {
-    color: #000 !important;
-    /* texto negro */
-    font-weight: bold !important;
-    /* negrita */
-    text-shadow: 0 0 1px #fff;
-    /* brillo leve para resaltar sobre textura */
-}
-
-.custom-navbar .nav-link:hover {
-    color: #6b421b !important;
-    /* color marrón medieval al pasar el mouse */
-}
-
-.content-wrapper {
-    background: none !important;
-    background-color: transparent !important;
-}
-
-.card-medieval {
+/* Card estilo pergamino (sin hover ni efectos) */
+.card-pergamino {
     background: url('/img/pergamino-textura.jpg') center center no-repeat;
     background-size: cover;
     border: 4px solid #a87c4f;
     border-radius: 12px;
     color: #3b2c1b;
     font-family: 'Uncial Antiqua', cursive;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
 }
 
-.card-medieval:hover {
-    transform: scale(1.03);
-}
-
-.card-medieval .card-header {
+.card-pergamino .card-header {
     background-color: transparent;
     border-bottom: 2px solid #caa76b;
-    font-size: 1.5rem;
-    color: #2e1c0b;
-    text-shadow: 1px 1px 1px #fef3d8;
 }
 
-.card-medieval .card-body p {
+.card-pergamino .card-body p {
     font-family: Georgia, serif;
     font-size: 1rem;
     color: #2f2f2f;
 }
 
-.card-medieval .btn {
+/* Botones */
+.action-btn {
+    background-color: #d2b48c;
+    color: #3b2c1b;
+    border: 2px solid #a87c4f;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: 'Uncial Antiqua', cursive;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.action-btn:hover {
+    background-color: #c49a6c;
+    color: #fff8e1;
+}
+
+.card-pergamino .btn {
     background-color: #d3b17c;
     color: #2f1d0b;
     font-weight: bold;
     border: none;
 }
 
-.card-medieval .btn:hover {
+.card-pergamino .btn:hover {
     background-color: #b88f54;
     color: #fff;
 }
 
+/* Tablas */
 table {
     width: 100%;
     border-collapse: collapse;
     background-color: rgba(255, 255, 255, 0.8);
-    /* fondo semitransparente */
     border-radius: 8px;
     overflow: hidden;
 }
@@ -106,7 +102,6 @@ td {
 
 thead {
     background-color: #f4e3c1;
-    /* color pergamino claro */
 }
 
 td:last-child {
@@ -114,20 +109,9 @@ td:last-child {
     gap: 8px;
 }
 
-.action-btn {
-    background-color: #eee;
-    border: none;
-    padding: 6px 8px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.action-btn:hover {
-    background-color: #ddd;
-}
-
+/* Formularios */
 select,
+input,
 button {
     padding: 6px 10px;
     border-radius: 4px;

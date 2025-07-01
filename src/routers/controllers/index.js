@@ -1,7 +1,7 @@
-const catsController = require('./catsController');
-const clansController = require('./clansController');
-const territoriesController = require('./territoriesController');
-const scrollsController = require('./scrollsController');
+const catsController = require('./cats.Controller');
+const clansController = require('./clans.Controller');
+const territoriesController = require('./territories.Controller');
+const scrollsController = require('./scrolls.Controller');
 
 module.exports = {
   catsController,

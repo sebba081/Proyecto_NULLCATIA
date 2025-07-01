@@ -6,7 +6,7 @@ const clansRoutes = require('./clans.routes');
 const territoriesRoutes = require('./territories.routes');
 const scrollsRoutes = require('./scrolls.routes');
 
-router.use('/gatitos', catRoutes);
+router.use('/gatos', catRoutes);
 router.use('/clanes', clansRoutes);
 router.use('/territorios', territoriesRoutes);
 router.use('/pergaminos', scrollsRoutes);

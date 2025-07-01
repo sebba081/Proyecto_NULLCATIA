@@ -10,7 +10,7 @@ const pergaminosRoutes = require('./scrolls.routes');
 router.use('/', homeRoutes);
 
 // Vistas específicas de gatitos
-router.use('/gatitos', catsRoutes);
+router.use('/gatos', catsRoutes);
 
 // Vistas de clanes
 router.use('/clanes', clanesRoutes);

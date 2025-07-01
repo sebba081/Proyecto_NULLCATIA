@@ -3,11 +3,11 @@ const db = require('../config/db');
 const Scroll = {
   findAll: async (filters = {}) => {
     let query = `
-    SELECT s.*, cl.name AS clan_name
-    FROM scrolls s
-    JOIN clans cl ON s.clan_id = cl.id
-    WHERE 1 = 1
-  `;
+      SELECT s.*, cl.name AS clan_name
+      FROM scrolls s
+      JOIN clans cl ON s.clan_id = cl.id
+      WHERE 1 = 1
+    `;
 
     const params = [];
 
@@ -30,18 +30,18 @@ const Scroll = {
     return rows[0];
   },
 
-  create: async ({ title, content, cat_id }) => {
+  create: async ({ title, content, clan_id }) => {
     const [result] = await db.query(
-      'INSERT INTO scrolls (title, content, cat_id, created_at) VALUES (?, ?, ?, NOW())',
-      [title, content, cat_id]
+      'INSERT INTO scrolls (title, content, clan_id, created_at) VALUES (?, ?, ?, NOW())',
+      [title, content, clan_id]
     );
     return result.insertId;
   },
 
-  update: async (id, { title, content, cat_id }) => {
+  update: async (id, { title, content, clan_id }) => {
     await db.query(
-      'UPDATE scrolls SET title = ?, content = ?, cat_id = ? WHERE id = ?',
-      [title, content, cat_id, id]
+      'UPDATE scrolls SET title = ?, content = ?, clan_id = ? WHERE id = ?',
+      [title, content, clan_id, id]
     );
   },
 

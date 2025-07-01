@@ -1,0 +1,23 @@
+<h1><%= scroll ? 'Editar Pergamino' : 'Nuevo Pergamino' %></h1>
+
+<form
+    action="<%= scroll ? '/pergamino/' + scroll.id + '?_method=PUT' : '/pergaminos' %>"
+    method="POST">
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title"
+        value="<%= scroll?.title || '' %>" required>
+
+    <label for="content">Contenido:</label>
+    <textarea id="content" name="content"
+        required><%= scroll?.content || '' %></textarea>
+
+    <label for="clan_id">Clan:</label>
+    <select name="clan_id" id="clan_id" required>
+        <% clanes.forEach(clan => { %>
+        <option value="<%= clan.id %>" <%=scroll?.clan_id == clan.id ?
+            'selected' : '' %>><%= clan.name %></option>
+        <% }) %>
+    </select>
+
+    <button type="submit"><%= scroll ? 'Actualizar' : 'Crear' %></button>
+</form>

@@ -5,13 +5,8 @@ const axios = require('axios');
 // Ruta principal del Reino NULLCATIA
 router.get('/', async (req, res) => {
     try {
-        // Llama a la API REST para obtener los gatitos
-        const response = await axios.get('http://localhost:3000/api/gatitos');
-        const cats = response.data;
-
         res.render('home', {
-            title: 'Reino de NULLCATIA',
-            cats // se usará en home.ejs
+            title: 'Reino de NULLCATIA'
         });
 
     } catch (err) {
